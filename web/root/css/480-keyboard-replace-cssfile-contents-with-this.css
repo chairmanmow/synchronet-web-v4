@@ -67,20 +67,24 @@
 	  z-index: 1000 !important;
 	}
 	#fTelnetKeyboard .fTelnetKeyboardRow .fTelnetKeyboardKeyArrowDown {
+		background-image: url("img/down-key.png");
 	  background-position: 4px 3px !important;
 	  background-repeat: no-repeat !important;
 	  width:7vw !important;
 	}
 	#fTelnetKeyboard .fTelnetKeyboardRow .fTelnetKeyboardKeyArrowLeft {
+		background-image: url("img/left-key.png");
 	  background-position: 4px 3px !important;
 	  background-repeat: no-repeat !important;
 	  width:6.5vw !important;
 	}
 	#fTelnetKeyboard .fTelnetKeyboardRow .fTelnetKeyboardKeyArrowRight {
+		background-image: url("img/right-key.png");
 	  background-position: 4px 3px !important;
 	  background-repeat: no-repeat !important;
 	}
 	#fTelnetKeyboard .fTelnetKeyboardRow .fTelnetKeyboardKeyArrowUp {
+	 	  background-image: url("img/up-key.png");
 	  background-position: 4px 3px !important;
 	  background-repeat: no-repeat !important;
 	  width:7vw !important;
@@ -89,6 +93,7 @@
 	  width: 11.5vw !important;
 	}
 	#fTelnetKeyboard .fTelnetKeyboardRow .fTelnetKeyboardKeyBackspace {
+		 background-image: url("img/backspace-key.png");
 	  background-position: 4px 15px !important;
 	  background-repeat: no-repeat !important;
 	  width: 16.5vw !important;
@@ -109,11 +114,13 @@
 
 	}
 	#fTelnetKeyboard .fTelnetKeyboardRow .fTelnetKeyboardKeyEnter {
+		 background-image: url("img/backspace-key.png");
 	  background-position: 4px 15px !important;
 	  background-repeat: no-repeat !important;
 	  width: 15.6vw !important;
 	}
 	#fTelnetKeyboard .fTelnetKeyboardRow .fTelnetKeyboardKeyShiftLeft {
+		 background-image: url("img/shift-key.png");
 	  background-position: 4px 15px !important;
 	  background-repeat: no-repeat !important;
 	  width: 15vw !important;
@@ -123,6 +130,7 @@
 	  border:1px solid gray !important;
 	}
 	#fTelnetKeyboard .fTelnetKeyboardRow .fTelnetKeyboardKeyTab {
+		  background-image: url("img/tab-key.png");
 	  background-position: 4px 15px !important;
 	  background-repeat: no-repeat !important;
 	  width: 10.8vw !important;

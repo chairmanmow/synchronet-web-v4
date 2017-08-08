@@ -5,8 +5,19 @@
 	var _hpl = getLanguage(settings.language_file || 'english.ini', 'page_home');
 ?>
 
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anton|Dosis|Fjalla+One|Monoton|Montserrat|Montserrat+Subrayada|Righteous|Rock+Salt|Saira|Ubuntu+Condensed" rel="stylesheet">
+<script src="./js/jquery.min.js"></script>
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./js/common.js"></script>
+<!-- BBS Spa code -->
+<script src="./app.js"></script>
+<script> 
+	var bbsSpa = new BbsSpa(); // initialize bbs Spa in the first rendered page as it never gets re-rendered or unrendered to not make multiples
+</script>
 <!-- FTELNET BLOCK -->
 	<script src="./ftelnet/ftelnet.norip.xfer.min.js" id="fTelnetScript"></script>
+
 	<style>.fTelnetStatusBar { display : none; }</style>
 	<div id="fTelnetContainer" style="margin-bottom:1em;clear:both;"></div>
 	
@@ -33,9 +44,10 @@
 			},300)
 		})
 		if(screen.width < 990){
-			bbsSpa.toggleTerm();
+			//bbsSpa.toggleTerm();
 		} else {
 			//fixme : handle fTelnet Desktop BS
 		}
 	</script>
 <!-- END FTELNET BLOCK -->
+<audio controls src="http://62.210.75.134:8000/stream/3/A_A_Ambient_&_Lounge" id="audiostream" type="audio/mp3"><audio>

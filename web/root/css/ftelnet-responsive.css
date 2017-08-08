@@ -102,7 +102,7 @@
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1) !important;
 }
 
-    .fTelnetMenuButtons a {
+.fTelnetMenuButtons a {
         border: 1px solid black !important;
         border-radius: 5px !important;
         color: black !important;

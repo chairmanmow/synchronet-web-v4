@@ -1,27 +1,83 @@
- @media only screen and (min-width:560px){
-    .app-wrapper #fTelnetCrtCanvas {
-    position:relative;
-    width:inherit !important;
-    }
-    audio {
-    	width:200px !important;
+
+@media only screen and (min-width:460px){
+  .bbs-name-navbar {
+    font-size:36px;
+    padding-top:4px;
+  }
+  .navbar-brand .fa {
+  }
+  .navbar-brand .n {
+    top:0;
+  }
+}
+#audiostream {
+  display:none;
+}
+
+@media only screen and (min-width:768px)  {
+     #audio-stream-controls {
+      position:fixed;
+      right:15px;
+      top:0;
     }
 }
 
-audio {
-	width:36vw;
-	margin-top:10px;
+.app-wrapper .navbar-default .navbar-nav>.active-menu-item>a {
+  color: #a458e4;
+  font-size:1.5em;
 }
+#audio-stream-controls {
+  display: inline-block;
+  font-size:1.8em;
+  margin-right:10px;
+  margin-left:10px;
+  padding-top:10px;
+}
+.navbar-default .container {
+  margin-left:0;
+  margin-top: -6px;
+}
+.bbs-name-navbar {
+  display: inline-block;
+  font-size:24px;
+  padding-top:10px;
+}
+
+#navbar-fa-icon-main {
+  font-size:20px;
+}
+
+.navbar-header {
+  min-width:40vw;
+}
+.term-toggle {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding-top: 9px;
+    padding-right: 10px;
+    padding-bottom: 9px;
+    padding-left: 10px;
+}  
+
+ @media only screen and (min-width:560px){
+    .app-wrapper #fTelnetCrtCanvas {
+      position:relative;
+      width:inherit !important;
+      max-width:100%;
+    } 
+}
+
+
 
 @media only screen and (max-width:767px){
   #navbar ul {
-	  font-size.9em;
-	  background-color: #9be8be !important; /* Change menu color to neutral at sandwich menu breakpoint */
-	}
+    font-size.9em;
+    background-color: #fff; /* Change menu color to neutral at sandwich menu breakpoint */
+  }
 }
 
 ul li.home-xjs { /* Don't show link to home page, it should always be rendered in SPA mode */
-	display:none;
+  display:none;
 }
 
 .fTelnetFocusWarning {
@@ -37,26 +93,40 @@ ul li.home-xjs { /* Don't show link to home page, it should always be rendered i
     }
 }
 
-.navbar-brand {
-	margin-left: 10px;
+.navbar-brand .fa-terminal {
+  background-color: black;
+  color: #00ff18 !important;
+  font-size:20px;
 }
 
+.navbar-brand .fa {
+  position:relative;
+  font-size:20px;
+}
 
 .navbar-toggle {
-	margin-right: 30px;
+  margin-right: 30px;
 }
 
 .app-wrapper {
-	#fTelnetKeyboard {
-		width:100vw;
-	}
+  #fTelnetKeyboard {
+    width:100vw;
+  }
 }
 
 #main-content {
-	margin-top:-30px;
-	padding-top:30px;
+  margin-top:-30px;
+  padding-top:30px;
 }
 
 #navbar ul {
-	font-size.9em;
+  font-size.9em;
+}
+
+.@media only screen and (min-width:992px){
+  #audio-stream-controls {
+      position:fixed;
+      right:8vw;
+      top:0;
+    }
 }

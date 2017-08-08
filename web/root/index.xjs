@@ -39,7 +39,7 @@
 ?>
 
 <?xjs function _subMenu(obj, title, path) { ?>
-	<li class="dropdown<?xjs if (path.match(/\//g).length > 1) write('-submenu'); ?>">
+	<li class="menu-item dropdown<?xjs if (path.match(/\//g).length > 1) write('-submenu'); ?>">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 			<?xjs write(title.replace(/^.*\-/, '')); ?>
 			<span class="caret"></span>
@@ -94,7 +94,7 @@
 		<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="./css/offcanvas.css" rel="stylesheet">
 		<link href="./css/style.css" rel="stylesheet">
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 		<?xjs if (file_exists(settings.web_root + 'css/custom.css')) { ?>
 			<link href="./css/custom.css" rel="stylesheet">
 		<?xjs } ?>
@@ -109,15 +109,10 @@
 
 	<body>
 
-		<script src="./js/jquery.min.js"></script>
-		<script src="./bootstrap/js/bootstrap.min.js"></script>
-		<script src="./js/common.js"></script>
-		<script src="./app.js"></script>
-		<script> 
-			var bbsSpa = new BbsSpa();
-		</script>
-		
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/add-on/jplayer.playlist.js"></script>
+<!-- move script dependencies into home js so they don't get reloaded in SPA mode -->
+<!-- <script src="./js/jquery.min.js"></script>
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./js/common.js"></script> -->
 
 		<div class="modal" id="popUpModal" tabindex="-1" role="dialog" style="display:none;">
 			<div class="modal-dialog" role="document">
@@ -143,30 +138,27 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container<?xjs if (settings.layout_full_width) write('-fluid'); ?>">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<!-- <span class="sr-only">
-							<?xjs write(_language.label_sidebar); ?>
-						</span> -->
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
+					<button class="navbar-toggle collapsed">
+						<i id="navbar-fa-icon-main" class="fa fa-home" onclick="bbsSpa.toggleNav()"></i>
 					</button>
 					<div class="navbar-brand" onclick="bbsSpa.toggleTerm()">
 						<!-- <?xjs write(system.name); ?> -->
-						<i class="fa fa-terminal" style="background-color: black; color: white; padding:3px;"></i>
+					<button class="term-toggle collapsed">
+						<i class="fa fa-terminal"></i>
+					</button>
+					</div>
+					<div class='bbs-name-navbar'>
+						<?xjs write(system.name); ?>
+					</div>
+					<div id="audio-stream-controls" class="pull-right">
+						<i class="fa fa-play" onclick="$('#audiostream').get(0).play();"></i>
+						<i class="fa fa-pause" onclick="$('#audiostream').get(0).pause();"></i>
 					</div>
 				</div>
 
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav"><?xjs if (user.alias === settings.guest || user.number < 1) { ?>
-							<?xjs if (settings.user_registration) { ?>
-								<li>
-									<a href="./?page=000-register.xjs">
-										<?xjs write(_language.menu_item_register); ?>
-									</a>
-								</li>
-							<?xjs } ?>
-							<li class="dropdown">
+						<li class="dropdown menu-item">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 									<?xjs write(_language.menu_item_login); ?>
 									<span class="caret"></span>
@@ -185,27 +177,27 @@
 									</form>
 								</div>
 							</li>
+							<?xjs if (settings.user_registration) { ?>
+								<li class="menu-item">
+									<a href="./?page=000-register.xjs">
+										<?xjs write(_language.menu_item_register); ?>
+									</a>
+								</li>
+							<?xjs } ?>
+							
 						<?xjs } else { ?>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-									<?xjs write(user.alias); ?>
-									<span class="badge scanned" title="Unread mail" id="badge-unread-mail"></span>
+							<li class="mail-menu-item">
+								<a href="./?page=000-mail.xjs">
+<!-- 									<?xjs write(user.alias); ?>
+ -->								<?xjs write(_language.menu_item_mail); ?>	
+ 									<span class="badge scanned" title="Unread mail" id="badge-unread-mail"></span>
 									<span class="caret"></span>
 								</a>
-								<ul class="dropdown-menu"> <!-- <ul class="nav navbar-nav navbar-right"> -->
-									<li>
-										<a href="./?page=000-mail.xjs">
-											<?xjs write(_language.menu_item_mail); ?>
-											<span class="badge scanned" title="<?xjs write(_language.label_unread_mail); ?>" id="badge-unread-mail-inner"></span>
-										</a>
-									</li>
-									<li>
-										<a id="button-logout" href="#">
+								
+										<!-- <a id="button-logout" href="#">
 											<?xjs write(_language.menu_item_logout); ?>
-										</a>
-									</li>
-								</ul>
-										</li>
+										</a> -->
+								</li>
 						<?xjs } ?>
 						<?xjs _menu(getPageList(settings.web_root + 'pages/')); ?>
 					</ul>
@@ -223,13 +215,7 @@
 					</div>
 				</div>
 				<div class="col-xs-12 col-md-4 sidebar-stuff">
-				<!-- 	<p class=""> <!-- class was -> pull-<?xjs write(settings.layout_sidebar_left ? 'left' : 'right'); ?> visible-xs -->
-<!-- 							<button title="Toggle sidebar" type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">
- -->							<!-- 	<span class="glyphicon glyphicon-tasks"></span>
-								<?xjs write(_language.label_sidebar); ?>
-							</button>
-						</p> --> 
-							<?xjs _sidebar(); ?>
+					<?xjs _sidebar(); ?>
 				</div>
 			</div>
 
@@ -251,9 +237,7 @@
 						e.stopPropagation();
 						e.preventDefault();
 					});
-					if(!bbsSpa.initialized){
-						bbsSpa.init();
-					}
+					bbsSpa.init(); // attach the listeners to the page every time index gets loaded with new content.
 					ftClient.Connect();
 					}	
 			);

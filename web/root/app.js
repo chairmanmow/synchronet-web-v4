@@ -1,6 +1,9 @@
 function BbsSpa(){
 	this.initialized = false;
-	this.debug = false;
+	this.debug = true;
+	this.routes = [];
+	this.routeIcon = 'fa fa-home';
+	this._dbug('bbs spa instantiated');
 }
 
 BbsSpa.prototype.init = function(){		
@@ -11,7 +14,9 @@ BbsSpa.prototype.init = function(){
 
 BbsSpa.prototype.toggleTerm = function(){
 	$('#fTelnetContainer').toggle();
-	if($('#fTelnetContainer').is(':visible')) ftClient.Connect();
+	if($('#fTelnetContainer').is(':visible')) {
+		ftClient.Connect();
+	} 
 }
 
 BbsSpa.prototype.toggleNav = function(){
@@ -22,9 +27,14 @@ BbsSpa.prototype._renderLinkInDiv = function(link){
 	let target = '#render-div'; let self = this;
 	this._hideBlockingElements();
 	$(target).addClass('spinner');
+	let activeMenuItem = this._setIconFromRouteGetLiClass(link);
 	$(target).load(link,function(){
+		self.routes.push(link);
 		self._removeDupeElements(target);
+		self._swapInRouteIcon();
+		self._addActiveClassToMenuItem(activeMenuItem);
 		$(target).removeClass('spinner');
+		self._dbug(JSON.stringify(self.routes));
 	});	
 }
 
@@ -38,7 +48,7 @@ BbsSpa.prototype._hijackLinks = function(){
 	let self = this;
 	$('a').click(function(e){
 		var route = $(this).attr("href");
-		if(route != '#'){
+		if(route[0] != '#' && (route[0] == '.' || route[0] == '/')){
 			e.preventDefault();
 			self._dbug('-- re-rendering page ' + route + ' --');
 			self._renderLinkInDiv(route);
@@ -77,4 +87,51 @@ BbsSpa.prototype._dbug = function(message){
 	} 
 }
 
+BbsSpa.prototype._swapInRouteIcon = function(){
+	$('#navbar-fa-icon-main').removeClass();
+	$('#navbar-fa-icon-main').addClass(this.routeIcon);
+	this._dbug('swap in route icon ' + this.routeIcon);
+}
+
+BbsSpa.prototype._removeActiveClassesFromMenuItems = function(){
+	$('.navbar li').removeClass('active-menu-item');
+}
+
+BbsSpa.prototype._setIconFromRouteGetLiClass = function(route){
+	if(route.indexOf('mail') > -1 ) {
+		this._removeActiveClassesFromMenuItems();
+		this.routeIcon = 'fa fa-envelope';
+		return '.mail-menu-item';
+	}
+	if(route.indexOf('forum') > -1 ){
+		this._removeActiveClassesFromMenuItems();
+		this.routeIcon ='fa fa-comments';
+		return '.001-forum-ssjs';
+	} 
+	if(route.indexOf('files') > -1 ) {
+		this._removeActiveClassesFromMenuItems();
+		this.routeIcon ='fa fa-file';
+		return '.002-files-xjs'
+	}
+	if(route.indexOf('games') > -1 ){
+		this._removeActiveClassesFromMenuItems();
+		this.routeIcon ='fa fa-gamepad';
+		return '.003-games-xjs';
+	} 
+	if(route.indexOf('userlist') > -1 ){
+		this._removeActiveClassesFromMenuItems();
+		this.routeIcon = 'fa fa-users';
+		return '.001-userlist-xjs';
+	} 
+	if(route.indexOf('register') > -1 ){
+		this._removeActiveClassesFromMenuItems();
+		this.routeIcon = 'fa fa-user-plus';
+		return '.navbar-nav li:nth-child(2)';
+	} 
+}
+
+BbsSpa.prototype._addActiveClassToMenuItem = function(targetClass){
+	$(targetClass).addClass('active-menu-item');
+
+}
 

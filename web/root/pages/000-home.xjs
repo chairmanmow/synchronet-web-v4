@@ -50,4 +50,4 @@
 		}
 	</script>
 <!-- END FTELNET BLOCK -->
-<audio controls src="http://62.210.75.134:8000/stream/3/A_A_Ambient_&_Lounge" id="audiostream" type="audio/mp3"><audio>
+<audio controls src="http://62.210.75.134:8000/stream/3/A_A_Ambient_&_Lounge" id="audiostream" type="audio/mp3"></audio>

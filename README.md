@@ -20,7 +20,7 @@ _______
 - /web/root/css/loader.css
 - /web/root/css/responsive-overides.css
 
-###### Replace/Merge
+###### Replace/Merge (BACK IT UP TOO IN CASE SOMETHING GOES WRONG!)
 
 - /web/root/index.xjs **
 - /web/root/pages/home.xjs **

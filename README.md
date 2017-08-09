@@ -22,12 +22,12 @@ _______
 
 ###### Replace/Merge
 
--/web/root/index.xjs **
--/web/root/pages/home.xjs **
--/web/root/ftelnet/ftelnet.norip.noxfer.min.js (replace) ***
--/web/root/ftelnet/ftelnet.norip.xfer.min.js (replace) ***
--/web/root/ftelnet/keyboard/keyboard-480.min.css (replace)****
--/web/root/ftelnet/keyboard/keyboard-720.min.css (replace)****
+- /web/root/index.xjs **
+- /web/root/pages/home.xjs **
+- /web/root/ftelnet/ftelnet.norip.noxfer.min.js (replace) ***
+- /web/root/ftelnet/ftelnet.norip.xfer.min.js (replace) ***
+- /web/root/ftelnet/keyboard/keyboard-480.min.css (replace)****
+- /web/root/ftelnet/keyboard/keyboard-720.min.css (replace)****
 _____
  ### Asterisks above (***) explained should you need to dive in
  *app.js contains the jquery code responsible for creating/hacking in the SPA behaviour and logic.

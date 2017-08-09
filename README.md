@@ -15,10 +15,10 @@ _______
 ##### You will replace or add to your existing install from this package's contents to the same location relative to your install:
 
 ######  New files
--/web/root/app.js  *
--/web/root/css/ftelnet-responsive.css
--/web/root/css/loader.css
--/web/root/css/responsive-overides.css
+- /web/root/app.js  *
+- /web/root/css/ftelnet-responsive.css
+- /web/root/css/loader.css
+- /web/root/css/responsive-overides.css
 
 ###### Replace/Merge
 

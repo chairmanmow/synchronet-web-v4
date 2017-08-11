@@ -19,7 +19,7 @@ function login(evt) {
 	).done(
 		function (data) {
 			if (data.authenticated) {
-				window.location.reload(true);
+				window.location.reload(true); //FIXME redirect
 			} else {
 				$('#login-form').append(
 					'<p class="text-danger">Login failed</p>'
@@ -38,7 +38,7 @@ function logout() {
 			}
 		}
 	).done(
-		function (data) { if (!data.authenticated) window.location.href = '/'; }
+		function (data) { if (!data.authenticated) window.location.href = '/'; }  //FIXME redirect
 	);
 }
 

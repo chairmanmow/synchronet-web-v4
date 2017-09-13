@@ -2,6 +2,8 @@
 
 ### Turns synchronet-web-v4 install into a mobile optimized single page app.
 
+If you want to give this a test drive without installing, it's up on my board @ http://futureland.today
+
 ######  --- The purpose/reason for existing/intended use case for this fork is to enable the user to have a terminal they can hide and show that doesn't lose its state (i.e. logged in) when switching between pages.  This demo also has an audio stream which also benefits from the single page approach by not having to rebuffer on every navigation change. 
 ###### --- It has been optimized/tweeked with mobile in mind  including changes to the ftelnet keyboard's reactiveness and screen positioning to enable optimal experience especially in the standard portrait mode, which has been overlooked in the BBS community.
 
@@ -41,3 +43,5 @@ _____
   ______
   ##### known issue(s)
 - Functionality is driveb by detecting links in the html that point at internal synchronet pages and rendering them inside another part of the page rather than re-rendering the entire thing.  There are some scenarios where it's not implemented, such as submitting a message from the forum because there are re-directs further down in the code.  I'll see what I can do to snuff these out as I go.
+
+- Menu bar sometimes doesn't render at right height on safari
